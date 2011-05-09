@@ -102,12 +102,8 @@ function RegisterPluginLinks($links, $file) {
  */
 function ActivatePlugin() {
 	$optfile = trailingslashit(dirname(__FILE__)) . "options.txt";
-	@ $fp = fopen($optfile, 'r');
-	if($fp) {
-		$options = fgets($fp);
-		fclose($fp);
-		add_option("wp_post_signature", $options, '', 'no');
-	}
+	$options = file_get_contents($optfile);
+	add_option("wp_post_signature", $options, '', 'no');
 }
 
 /**
@@ -115,12 +111,7 @@ function ActivatePlugin() {
  */
 function DeactivatePlugin() {
 	$optfile = trailingslashit(dirname(__FILE__)) . "options.txt";
-	@ $fp = fopen($optfile, 'w');
-	if($fp) {
-		fputs($fp, get_option("wp_post_signature"));
-		fclose($fp);
-	}
-	
+	file_put_contents($optfile, get_option("wp_post_signature"));
 	delete_option("wp_post_signature");
 }
 
