@@ -1,0 +1,182 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Post Signature V0.1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-05-09 18:43+0800\n"
+"PO-Revision-Date: 2011-05-09 18:43+0800\n"
+"Last-Translator: Soli <soli@qq.com>\n"
+"Language-Team: Soli <soli@qq.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__;_;gettext;gettext_noop\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Chinese\n"
+"X-Poedit-Country: CHINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../wp-post-signature-page.php:29
+msgid "Configuration updated"
+msgstr "配置已更新"
+
+#: ../wp-post-signature-page.php:31
+msgid "Error while saving options"
+msgstr "保存选项时出错"
+
+#: ../wp-post-signature-page.php:42
+msgid "This plugin allows you to append a signature after every post. Some variables can be used, such as %post_title%, %post_link%, %bloginfo_name%, %bloginfo_url%, and so on. It supports multiuser."
+msgstr "该插件在每篇文章后面添加签名档。支持多个变量，如%post_title%, %post_link%, %bloginfo_name%, %bloginfo_url%等。该插件支持多用户。"
+
+#: ../wp-post-signature-page.php:61
+msgid "Enter your post signature in the text area below. HTML markup is allowed."
+msgstr "请在下面的文本框中输入您的签名档内容。支持HTML。"
+
+#: ../wp-post-signature-page.php:63
+msgid "Will the signature be on or off by default?"
+msgstr "默认“启用”或“禁用”签名档功能？"
+
+#: ../wp-post-signature-page.php:64
+msgid "On"
+msgstr "启用"
+
+#: ../wp-post-signature-page.php:65
+msgid "Off"
+msgstr "禁用"
+
+#: ../wp-post-signature-page.php:67
+msgid "Where should the signature be placed?"
+msgstr "签名档被放置在什么位置？"
+
+#: ../wp-post-signature-page.php:68
+msgid "Top"
+msgstr "顶部"
+
+#: ../wp-post-signature-page.php:69
+msgid "Bottom"
+msgstr "底部"
+
+#: ../wp-post-signature-page.php:72
+msgid "Save Changes"
+msgstr "保存修改"
+
+#: ../wp-post-signature-page.php:83
+msgid "Supported variables:"
+msgstr "支持的变量："
+
+#: ../wp-post-signature-page.php:86
+msgid "Variable"
+msgstr "变量"
+
+#: ../wp-post-signature-page.php:87
+msgid "Description"
+msgstr "描述"
+
+#: ../wp-post-signature-page.php:88
+msgid "Sample Value"
+msgstr "示例"
+
+#: ../wp-post-signature-page.php:93
+msgid "The post title."
+msgstr "文章的标题"
+
+#: ../wp-post-signature-page.php:99
+msgid "The permalink for a post with a custom post type."
+msgstr "文章的固定链接"
+
+#: ../wp-post-signature-page.php:105
+msgid "The post author."
+msgstr "文章的作者"
+
+#: ../wp-post-signature-page.php:111
+msgid "The post trackback URL."
+msgstr "文章的Trackback地址"
+
+#: ../wp-post-signature-page.php:117
+msgid "The post date."
+msgstr "文章的发表日期"
+
+#: ../wp-post-signature-page.php:123
+msgid "The post GMT datetime. (GMT = Greenwich Mean Time)"
+msgstr "文章的发表GMT日期（GMT，即格林威治标准时间）"
+
+#: ../wp-post-signature-page.php:129
+msgid "Date the post was last modified."
+msgstr "文章的最后修改日期"
+
+#: ../wp-post-signature-page.php:135
+msgid "GMT date the post was last modified. (GMT = Greenwich Mean Time)"
+msgstr "文章的最后修改GMT日期（GMT，即格林威治标准时间）"
+
+#: ../wp-post-signature-page.php:141
+msgid "The \"Site Title\" set in Settings > General."
+msgstr "后台的“设置->常规选项”页面中配置的“站点标题”"
+
+#: ../wp-post-signature-page.php:147
+msgid "The \"Tagline\" set in Settings > General."
+msgstr "后台的“设置->常规选项”页面中配置的“副标题”"
+
+#: ../wp-post-signature-page.php:153
+msgid "The \"WordPress address (URI)\" set in Settings > General."
+msgstr "后台的“设置->常规选项”页面中配置的“WordPress 地址（URL）”"
+
+#: ../wp-post-signature-page.php:159
+msgid "The \"Site address (URI)\" set in Settings > General."
+msgstr "后台的“设置->常规选项”页面中配置的“站点地址（URL）”"
+
+#: ../wp-post-signature-page.php:165
+msgid "The \"E-mail address\" set in Settings > General."
+msgstr "后台的“设置->常规选项”页面中配置的“电子邮件”"
+
+#: ../wp-post-signature-page.php:171
+msgid "The Pingback XML-RPC file URL (xmlrpc.php)."
+msgstr "Pingback XML-RPC 文件地址 (xmlrpc.php)"
+
+#: ../wp-post-signature-page.php:177
+msgid "The Atom feed URL (/feed/atom)."
+msgstr "文章的订阅地址（Atom feed URL (/feed/atom)）"
+
+#: ../wp-post-signature-page.php:183
+msgid "The RDF/RSS 1.0 feed URL (/feed/rfd)."
+msgstr "文章的订阅地址（RDF/RSS 1.0 feed URL (/feed/rfd)）"
+
+#: ../wp-post-signature-page.php:189
+msgid "The RSS 0.92 feed URL (/feed/rss)."
+msgstr "文章的订阅地址（RSS 0.92 feed URL (/feed/rss)）"
+
+#: ../wp-post-signature-page.php:195
+msgid "The RSS 2.0 feed URL (/feed)."
+msgstr "文章的订阅地址（RSS 2.0 feed URL (/feed)）"
+
+#: ../wp-post-signature-page.php:201
+msgid "The comments Atom feed URL (/comments/feed)."
+msgstr "评论的订阅地址（Atom feed URL (/comments/feed)）"
+
+#: ../wp-post-signature-page.php:207
+msgid "The comments RSS 2.0 feed URL (/comments/feed)."
+msgstr "评论的订阅地址（RSS 2.0 feed URL (/comments/feed)）"
+
+#: ../wp-post-signature-page.php:225
+msgid "About this plugin"
+msgstr "关于本插件"
+
+#: ../wp-post-signature-page.php:227
+msgid "Plugin URI"
+msgstr "插件链接地址"
+
+#: ../wp-post-signature-page.php:228
+msgid "Author URI"
+msgstr "作者页面"
+
+#: ../wp-post-signature-page.php:245
+msgid "WP Post Signature"
+msgstr "签名档"
+
+#: ../wp-post-signature.php:94
+msgid "Settings"
+msgstr "配置"
+
+#: ../wp-post-signature.php:95
+msgid "FAQ"
+msgstr "常见问题"
+
