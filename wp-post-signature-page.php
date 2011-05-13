@@ -48,7 +48,8 @@ function WPPostSignature_Options_Page() {
 	<div class="meta-box-sortabless">
 
 	<!--setting-->
-	<div id="wpps-setting" class="tool-box">
+	<div id="wpps-setting" class="postbox">
+	<h3 class="hndle"><?php _e('Settings', 'wp-post-signature'); ?></h3>
 	<?php
 		global $current_user;
 		get_currentuserinfo();
@@ -56,6 +57,7 @@ function WPPostSignature_Options_Page() {
 		$current_signature = $wp_post_signature[$current_user->ID];
 	?>
 	<form method="post" action="<?php echo get_bloginfo("wpurl"); ?>/wp-admin/options-general.php?page=<?php echo plugin_basename(__FILE__); ?>">
+	<div style="padding-left: 10px;">
 	<input type="hidden" name="wpps_update_options" value="Y">
 
 	<p><?php _e('Enter your post signature in the text area below. HTML markup is allowed.', 'wp-post-signature'); ?></p>
@@ -71,17 +73,16 @@ function WPPostSignature_Options_Page() {
 	<p class="submit">
 	<input type="submit" name="Submit" value="<?php _e('Save Changes', 'wp-post-signature'); ?>" />
 	</p>
+	</div>
 	</form>
 	</div>
 	<!--setting end-->
 
 	<!--others-->
-	<hr />
-	<div id="wpps-desc">
+	<div id="wpps-info" class="postbox">
+	<h3 class="hndle"><?php _e('Supported variables:', 'wp-post-signature'); ?></h3>
 
 	<table class="form-table">
-	<tr><th><?php _e('Supported variables:', 'wp-post-signature'); ?></th></tr>
-
 	<tr>
 	<th scope="row"><b><?php _e('Variable', 'wp-post-signature'); ?></b></th>
 	<td><b><?php _e('Description', 'wp-post-signature'); ?></b></td>
