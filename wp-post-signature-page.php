@@ -243,7 +243,7 @@ function WPPostSignature_Options_Page() {
 }
 
 function WPPostSignature_Menu() {
-	add_options_page(__('WP Post Signature'), __('WP Post Signature'), 10, __FILE__, array(__CLASS__,'WPPostSignature_Options_Page'));
+	add_options_page(__('WP Post Signature'), __('WP Post Signature'), 1, "wp-post-signature", array(__CLASS__,'WPPostSignature_Options_Page'));
 }
 
 } // end of class WPPostSignaturePage
