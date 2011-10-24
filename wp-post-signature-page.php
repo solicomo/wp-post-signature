@@ -56,7 +56,7 @@ function WPPostSignature_Options_Page() {
 		$wp_post_signature = maybe_unserialize(get_option('wp_post_signature'));
 		$current_signature = $wp_post_signature[$current_user->ID];
 	?>
-	<form method="post" action="<?php echo get_bloginfo("wpurl"); ?>/wp-admin/options-general.php?page=<?php echo plugin_basename(__FILE__); ?>">
+	<form method="post" action="<?php echo get_bloginfo("wpurl"); ?>/wp-admin/options-general.php?page=wp-post-signature">
 	<div style="padding-left: 10px;">
 	<input type="hidden" name="wpps_update_options" value="Y">
 
@@ -243,7 +243,7 @@ function WPPostSignature_Options_Page() {
 }
 
 function WPPostSignature_Menu() {
-	add_options_page(__('WP Post Signature'), __('WP Post Signature'), 1, "wp-post-signature", array(__CLASS__,'WPPostSignature_Options_Page'));
+	add_options_page(__('WP Post Signature'), __('WP Post Signature'), 1, 'wp-post-signature', array(__CLASS__,'WPPostSignature_Options_Page'));
 }
 
 } // end of class WPPostSignaturePage
