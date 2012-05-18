@@ -225,7 +225,7 @@ function WPPostSignature_Options_Page() {
 	<div id="wpps-about" class="postbox">
 	<h3 class="hndle"><?php _e('About this plugin', 'wp-post-signature'); ?></h3>
 	<div class="inside"><ul>
-	<li><a href="http://www.cbug.org"><?php _e('Plugin URI', 'wp-post-signature'); ?></a></li>
+	<li><a href="http://wordpress.org/extend/plugins/wp-post-signature/"><?php _e('Plugin URI', 'wp-post-signature'); ?></a></li>
 	<li><a href="http://www.cbug.org" target="_blank"><?php _e('Author URI', 'wp-post-signature'); ?></a></li>
 	</ul></div>
 	</div>
