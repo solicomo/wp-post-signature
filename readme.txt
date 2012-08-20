@@ -29,6 +29,9 @@ This plugin allows you to append a signature after every post.
 
 == Changelog ==
 
+= 0.1.6 =
+* fix "You do not have sufficient permissions to access this page.".
+
 = 0.1.5 =
 * signature can now appeded to the posts in archive list.
 * you can now choose categories in which the posts will be appeded by the signature.
