@@ -29,6 +29,9 @@ This plugin allows you to append a signature after every post.
 
 == Changelog ==
 
+= 0.1.7 =
+* bug fix
+
 = 0.1.6 =
 * fix "You do not have sufficient permissions to access this page.".
 
