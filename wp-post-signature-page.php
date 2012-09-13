@@ -56,8 +56,29 @@ function WPPostSignature_Options_Page() {
 	<p><?php _e('This plugin allows you to append a signature after every post. Some variables can be used, such as %post_title%, %post_link%, %bloginfo_name%, %bloginfo_url%, and so on. It supports multiuser.', 'wp-post-signature'); ?></p>
 	</div>
 
+	<!--right-->
+	<div class="postbox-container" style="float:right;width:300px;">
+	<div class="metabox-holder">
+	<div class="meta-box-sortables">
+
+	<!--about-->
+	<div id="wpps-about" class="postbox">
+	<h3 class="hndle"><?php _e('About this plugin', 'wp-post-signature'); ?></h3>
+	<div class="inside"><ul>
+	<li><a href="http://wordpress.org/extend/plugins/wp-post-signature/"><?php _e('Plugin URI', 'wp-post-signature'); ?></a></li>
+	<li><a href="http://www.cbug.org" target="_blank"><?php _e('Author URI', 'wp-post-signature'); ?></a></li>
+	</ul></div>
+	</div>
+	<!--about end-->
+
+	<!--others-->
+	<!--others end-->
+
+	</div></div></div>
+	<!--right end-->
+
 	<!--left-->
-	<div class="postbox-container" style="width:75%;">
+	<div class="postbox-container" style="float:none;margin-right:320px;">
 	<div class="metabox-holder">
 	<div class="meta-box-sortabless">
 
@@ -277,34 +298,13 @@ function WPPostSignature_Options_Page() {
 	</div></div></div>
 	<!--left end-->
 
-	<!--right-->
-	<div class="postbox-container" style="width:21%;">
-	<div class="metabox-holder">
-	<div class="meta-box-sortables">
-
-	<!--about-->
-	<div id="wpps-about" class="postbox">
-	<h3 class="hndle"><?php _e('About this plugin', 'wp-post-signature'); ?></h3>
-	<div class="inside"><ul>
-	<li><a href="http://wordpress.org/extend/plugins/wp-post-signature/"><?php _e('Plugin URI', 'wp-post-signature'); ?></a></li>
-	<li><a href="http://www.cbug.org" target="_blank"><?php _e('Author URI', 'wp-post-signature'); ?></a></li>
-	</ul></div>
-	</div>
-	<!--about end-->
-
-	<!--others-->
-	<!--others end-->
-
-	</div></div></div>
-	<!--right end-->
-
 	</div>
 	</div>
 	<?php
 }
 
 function WPPostSignature_Menu() {
-	add_options_page(__('WP Post Signature'), __('WP Post Signature'), 1, 'wp-post-signature', array(__CLASS__,'WPPostSignature_Options_Page'));
+	add_options_page(__('WP Post Signature'), __('WP Post Signature'), 'publish_posts', 'wp-post-signature', array(__CLASS__,'WPPostSignature_Options_Page'));
 }
 
 } // end of class WPPostSignaturePage
