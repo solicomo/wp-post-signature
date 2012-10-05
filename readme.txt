@@ -29,15 +29,18 @@ This plugin allows you to append a signature after every post.
 
 == Changelog ==
 
+= 0.2.0 =
+* now we know posts and pages.
+
 = 0.1.9 =
 * fix some warning.
-* improve options page
+* improve options page.
 
 = 0.1.8 =
-* Tested up to: 3.4.2
+* Tested up to: 3.4.2.
 
 = 0.1.7 =
-* bug fix
+* bug fix.
 
 = 0.1.6 =
 * fix "You do not have sufficient permissions to access this page.".
