@@ -39,14 +39,31 @@ function AppendSignature($content) {
 	$wp_post_signature = maybe_unserialize(get_option('wp_post_signature'));
 	$current_signature = $wp_post_signature[$author];
 
-	if($current_signature['signature_switch'] == 'no') {
+	if(!isset($current_signature['signature_switch']) || $current_signature['signature_switch'] == 'no') {
 		return $content;
 	}
 
-	if(!is_single()) {
-		if($current_signature['signature_archive_list_switch'] != 'yes') {
+	if(!is_singular()) {
+		if(!isset($current_signature['signature_archive_list_switch']) || $current_signature['signature_archive_list_switch'] != 'yes') {
 			return $content;
 		}
+	}
+
+	if(isset($current_signature['signature_include_types'])){
+		if(is_page()) {
+			if(!in_array('page', $current_signature['signature_include_types'])) {
+				return $content;
+			}
+		}else if(is_single()) {
+			if(!in_array('post', $current_signature['signature_include_types'])) {
+				return $content;
+			}
+		}else {
+			if(!in_array('other', $current_signature['signature_include_types'])) {
+				return $content;
+			}
+		}
+
 	}
 
 	if(isset($current_signature['signature_exclude_cates'])){

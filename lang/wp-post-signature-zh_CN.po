@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WP Post Signature V0.1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-08-20 21:18+0800\n"
-"PO-Revision-Date: 2012-08-20 21:18+0800\n"
+"POT-Creation-Date: 2012-10-05 21:44+0800\n"
+"PO-Revision-Date: 2012-10-05 21:46+0800\n"
 "Last-Translator: Soli <soli@qq.com>\n"
 "Language-Team: Soli <soli@qq.com>\n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: \n"
 "X-Poedit-KeywordsList: _e;__;_;gettext;gettext_noop\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-Language: Chinese\n"
@@ -30,179 +30,195 @@ msgid "This plugin allows you to append a signature after every post. Some varia
 msgstr "该插件在每篇文章后面添加签名档。支持多个变量，如%post_title%, %post_link%, %bloginfo_name%, %bloginfo_url%等。该插件支持多用户。"
 
 #: ../wp-post-signature-page.php:66
-#: ../wp-post-signature.php:103
-msgid "Settings"
-msgstr "配置"
-
-#: ../wp-post-signature-page.php:77
-msgid "Enter your post signature in the text area below. HTML markup is allowed."
-msgstr "请在下面的文本框中输入您的签名档内容。支持HTML。"
-
-#: ../wp-post-signature-page.php:79
-msgid "Will the signature be on or off by default?"
-msgstr "默认“启用”或“禁用”签名档功能？"
-
-#: ../wp-post-signature-page.php:80
-msgid "On"
-msgstr "启用"
-
-#: ../wp-post-signature-page.php:81
-msgid "Off"
-msgstr "禁用"
-
-#: ../wp-post-signature-page.php:83
-msgid "Where should the signature be placed?"
-msgstr "签名档被放置在什么位置？"
-
-#: ../wp-post-signature-page.php:84
-msgid "Top"
-msgstr "顶部"
-
-#: ../wp-post-signature-page.php:85
-msgid "Bottom"
-msgstr "底部"
-
-#: ../wp-post-signature-page.php:87
-msgid "Will the signature be appended to the posts in archive list?"
-msgstr "是否在文档列表里的文章中也添加签名档？"
-
-#: ../wp-post-signature-page.php:88
-msgid "Yes"
-msgstr "是"
-
-#: ../wp-post-signature-page.php:89
-msgid "No"
-msgstr "否"
-
-#: ../wp-post-signature-page.php:91
-msgid "Which categories should the signature be placed?"
-msgstr "哪些分类中的文章会被添加签名档？"
-
-#: ../wp-post-signature-page.php:103
-msgid "check all"
-msgstr "全选"
-
-#: ../wp-post-signature-page.php:104
-msgid "check reverse"
-msgstr "反选"
-
-#: ../wp-post-signature-page.php:135
-msgid "Save Changes"
-msgstr "保存修改"
-
-#: ../wp-post-signature-page.php:144
-msgid "Supported variables:"
-msgstr "支持的变量："
-
-#: ../wp-post-signature-page.php:148
-msgid "Variable"
-msgstr "变量"
-
-#: ../wp-post-signature-page.php:149
-msgid "Description"
-msgstr "描述"
-
-#: ../wp-post-signature-page.php:150
-msgid "Sample Value"
-msgstr "示例"
-
-#: ../wp-post-signature-page.php:155
-msgid "The post title."
-msgstr "文章的标题"
-
-#: ../wp-post-signature-page.php:161
-msgid "The permalink for a post with a custom post type."
-msgstr "文章的固定链接"
-
-#: ../wp-post-signature-page.php:167
-msgid "The post author."
-msgstr "文章的作者"
-
-#: ../wp-post-signature-page.php:173
-msgid "The post trackback URL."
-msgstr "文章的Trackback地址"
-
-#: ../wp-post-signature-page.php:179
-msgid "The post date."
-msgstr "文章的发表日期"
-
-#: ../wp-post-signature-page.php:185
-msgid "The post GMT datetime. (GMT = Greenwich Mean Time)"
-msgstr "文章的发表GMT日期（GMT，即格林威治标准时间）"
-
-#: ../wp-post-signature-page.php:191
-msgid "Date the post was last modified."
-msgstr "文章的最后修改日期"
-
-#: ../wp-post-signature-page.php:197
-msgid "GMT date the post was last modified. (GMT = Greenwich Mean Time)"
-msgstr "文章的最后修改GMT日期（GMT，即格林威治标准时间）"
-
-#: ../wp-post-signature-page.php:203
-msgid "The \"Site Title\" set in Settings > General."
-msgstr "后台的“设置->常规选项”页面中配置的“站点标题”"
-
-#: ../wp-post-signature-page.php:209
-msgid "The \"Tagline\" set in Settings > General."
-msgstr "后台的“设置->常规选项”页面中配置的“副标题”"
-
-#: ../wp-post-signature-page.php:215
-msgid "The \"WordPress address (URI)\" set in Settings > General."
-msgstr "后台的“设置->常规选项”页面中配置的“WordPress 地址（URL）”"
-
-#: ../wp-post-signature-page.php:221
-msgid "The \"Site address (URI)\" set in Settings > General."
-msgstr "后台的“设置->常规选项”页面中配置的“站点地址（URL）”"
-
-#: ../wp-post-signature-page.php:227
-msgid "The \"E-mail address\" set in Settings > General."
-msgstr "后台的“设置->常规选项”页面中配置的“电子邮件”"
-
-#: ../wp-post-signature-page.php:233
-msgid "The Pingback XML-RPC file URL (xmlrpc.php)."
-msgstr "Pingback XML-RPC 文件地址 (xmlrpc.php)"
-
-#: ../wp-post-signature-page.php:239
-msgid "The Atom feed URL (/feed/atom)."
-msgstr "文章的订阅地址（Atom feed URL (/feed/atom)）"
-
-#: ../wp-post-signature-page.php:245
-msgid "The RDF/RSS 1.0 feed URL (/feed/rfd)."
-msgstr "文章的订阅地址（RDF/RSS 1.0 feed URL (/feed/rfd)）"
-
-#: ../wp-post-signature-page.php:251
-msgid "The RSS 0.92 feed URL (/feed/rss)."
-msgstr "文章的订阅地址（RSS 0.92 feed URL (/feed/rss)）"
-
-#: ../wp-post-signature-page.php:257
-msgid "The RSS 2.0 feed URL (/feed)."
-msgstr "文章的订阅地址（RSS 2.0 feed URL (/feed)）"
-
-#: ../wp-post-signature-page.php:263
-msgid "The comments Atom feed URL (/comments/feed)."
-msgstr "评论的订阅地址（Atom feed URL (/comments/feed)）"
-
-#: ../wp-post-signature-page.php:269
-msgid "The comments RSS 2.0 feed URL (/comments/feed)."
-msgstr "评论的订阅地址（RSS 2.0 feed URL (/comments/feed)）"
-
-#: ../wp-post-signature-page.php:287
 msgid "About this plugin"
 msgstr "关于本插件"
 
-#: ../wp-post-signature-page.php:289
+#: ../wp-post-signature-page.php:68
 msgid "Plugin URI"
 msgstr "插件链接地址"
 
-#: ../wp-post-signature-page.php:290
+#: ../wp-post-signature-page.php:69
 msgid "Author URI"
 msgstr "作者页面"
 
-#: ../wp-post-signature-page.php:307
+#: ../wp-post-signature-page.php:87
+#: ../wp-post-signature.php:121
+msgid "Settings"
+msgstr "配置"
+
+#: ../wp-post-signature-page.php:98
+msgid "Enter your post signature in the text area below. HTML markup is allowed."
+msgstr "请在下面的文本框中输入您的签名档内容。支持HTML。"
+
+#: ../wp-post-signature-page.php:100
+msgid "Will the signature be on or off by default?"
+msgstr "默认“启用”或“禁用”签名档功能？"
+
+#: ../wp-post-signature-page.php:101
+msgid "On"
+msgstr "启用"
+
+#: ../wp-post-signature-page.php:102
+msgid "Off"
+msgstr "禁用"
+
+#: ../wp-post-signature-page.php:104
+msgid "Where should the signature be placed?"
+msgstr "签名档被放置在什么位置？"
+
+#: ../wp-post-signature-page.php:105
+msgid "Top"
+msgstr "顶部"
+
+#: ../wp-post-signature-page.php:106
+msgid "Bottom"
+msgstr "底部"
+
+#: ../wp-post-signature-page.php:108
+msgid "Will the signature be appended to the posts in archive or category list?"
+msgstr "是否在归档/分类列表里的文章中也添加签名档？"
+
+#: ../wp-post-signature-page.php:109
+msgid "Yes"
+msgstr "是"
+
+#: ../wp-post-signature-page.php:110
+msgid "No"
+msgstr "否"
+
+#: ../wp-post-signature-page.php:112
+msgid "Which types should the signature be placed?"
+msgstr "哪些类型的内容会被添加签名档？"
+
+#: ../wp-post-signature-page.php:113
+msgid "Post"
+msgstr "文章"
+
+#: ../wp-post-signature-page.php:114
+msgid "Page"
+msgstr "页面"
+
+#: ../wp-post-signature-page.php:115
+msgid "Other"
+msgstr "其他"
+
+#: ../wp-post-signature-page.php:118
+msgid "Which categories should the signature be placed?"
+msgstr "哪些分类中的文章会被添加签名档？"
+
+#: ../wp-post-signature-page.php:130
+msgid "check all"
+msgstr "全选"
+
+#: ../wp-post-signature-page.php:131
+msgid "check reverse"
+msgstr "反选"
+
+#: ../wp-post-signature-page.php:162
+msgid "Save Changes"
+msgstr "保存修改"
+
+#: ../wp-post-signature-page.php:171
+msgid "Supported variables:"
+msgstr "支持的变量："
+
+#: ../wp-post-signature-page.php:175
+msgid "Variable"
+msgstr "变量"
+
+#: ../wp-post-signature-page.php:176
+msgid "Description"
+msgstr "描述"
+
+#: ../wp-post-signature-page.php:177
+msgid "Sample Value"
+msgstr "示例"
+
+#: ../wp-post-signature-page.php:182
+msgid "The post title."
+msgstr "文章的标题"
+
+#: ../wp-post-signature-page.php:188
+msgid "The permalink for a post with a custom post type."
+msgstr "文章的固定链接"
+
+#: ../wp-post-signature-page.php:194
+msgid "The post author."
+msgstr "文章的作者"
+
+#: ../wp-post-signature-page.php:200
+msgid "The post trackback URL."
+msgstr "文章的Trackback地址"
+
+#: ../wp-post-signature-page.php:206
+msgid "The post date."
+msgstr "文章的发表日期"
+
+#: ../wp-post-signature-page.php:212
+msgid "The post GMT datetime. (GMT = Greenwich Mean Time)"
+msgstr "文章的发表GMT日期（GMT，即格林威治标准时间）"
+
+#: ../wp-post-signature-page.php:218
+msgid "Date the post was last modified."
+msgstr "文章的最后修改日期"
+
+#: ../wp-post-signature-page.php:224
+msgid "GMT date the post was last modified. (GMT = Greenwich Mean Time)"
+msgstr "文章的最后修改GMT日期（GMT，即格林威治标准时间）"
+
+#: ../wp-post-signature-page.php:230
+msgid "The \"Site Title\" set in Settings > General."
+msgstr "后台的“设置->常规选项”页面中配置的“站点标题”"
+
+#: ../wp-post-signature-page.php:236
+msgid "The \"Tagline\" set in Settings > General."
+msgstr "后台的“设置->常规选项”页面中配置的“副标题”"
+
+#: ../wp-post-signature-page.php:242
+msgid "The \"WordPress address (URI)\" set in Settings > General."
+msgstr "后台的“设置->常规选项”页面中配置的“WordPress 地址（URL）”"
+
+#: ../wp-post-signature-page.php:248
+msgid "The \"Site address (URI)\" set in Settings > General."
+msgstr "后台的“设置->常规选项”页面中配置的“站点地址（URL）”"
+
+#: ../wp-post-signature-page.php:254
+msgid "The \"E-mail address\" set in Settings > General."
+msgstr "后台的“设置->常规选项”页面中配置的“电子邮件”"
+
+#: ../wp-post-signature-page.php:260
+msgid "The Pingback XML-RPC file URL (xmlrpc.php)."
+msgstr "Pingback XML-RPC 文件地址 (xmlrpc.php)"
+
+#: ../wp-post-signature-page.php:266
+msgid "The Atom feed URL (/feed/atom)."
+msgstr "文章的订阅地址（Atom feed URL (/feed/atom)）"
+
+#: ../wp-post-signature-page.php:272
+msgid "The RDF/RSS 1.0 feed URL (/feed/rfd)."
+msgstr "文章的订阅地址（RDF/RSS 1.0 feed URL (/feed/rfd)）"
+
+#: ../wp-post-signature-page.php:278
+msgid "The RSS 0.92 feed URL (/feed/rss)."
+msgstr "文章的订阅地址（RSS 0.92 feed URL (/feed/rss)）"
+
+#: ../wp-post-signature-page.php:284
+msgid "The RSS 2.0 feed URL (/feed)."
+msgstr "文章的订阅地址（RSS 2.0 feed URL (/feed)）"
+
+#: ../wp-post-signature-page.php:290
+msgid "The comments Atom feed URL (/comments/feed)."
+msgstr "评论的订阅地址（Atom feed URL (/comments/feed)）"
+
+#: ../wp-post-signature-page.php:296
+msgid "The comments RSS 2.0 feed URL (/comments/feed)."
+msgstr "评论的订阅地址（RSS 2.0 feed URL (/comments/feed)）"
+
+#: ../wp-post-signature-page.php:313
 msgid "WP Post Signature"
 msgstr "签名档"
 
-#: ../wp-post-signature.php:104
+#: ../wp-post-signature.php:122
 msgid "FAQ"
 msgstr "常见问题"
 
