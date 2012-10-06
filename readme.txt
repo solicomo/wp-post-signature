@@ -29,6 +29,9 @@ This plugin allows you to append a signature after every post.
 
 == Changelog ==
 
+= 0.2.1 =
+* reduce the settings.
+
 = 0.2.0 =
 * now we know posts and pages.
 
