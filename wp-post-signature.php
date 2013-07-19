@@ -44,16 +44,23 @@ function AppendSignature($content) {
 		return $content;
 	}
 
-	if(isset($current_signature['signature_include_types'])){
-		if(!in_array($post_type, $current_signature['signature_include_types'])) {
-			return $content;
-		}
-	}else if(!is_singular()) {	// for compatible with v 0.2.0 and before
-		if(!isset($current_signature['signature_archive_list_switch']) || $current_signature['signature_archive_list_switch'] != 'yes') {
+	if(!is_singular()) {
+		if(!isset($current_signature['signature_list_switch']) || $current_signature['signature_list_switch'] != 'yes') {
 			return $content;
 		}
 	}
 
+	if(isset($current_signature['signature_include_types'])){
+		if(!is_singular()) {
+			if(!in_array('postlist', $current_signature['signature_include_types'])) {
+				return $content;
+			}
+		}
+
+		if(!in_array($post_type, $current_signature['signature_include_types'])) {
+			return $content;
+		}
+	}
 
 	if(isset($current_signature['signature_exclude_cates'])){
 		foreach ($categories as $category) {
