@@ -109,11 +109,17 @@ function WPPostSignature_Options_Page() {
 	<?php
 	$post_types = get_post_types();
 	foreach ($post_types as $post_type ) {
-	?>
-		<input type="checkbox" name="signature_include_types[]" value="<?php echo $post_type; ?>" <?php if(isset($current_signature['signature_include_types']) && in_array($post_type, $current_signature['signature_include_types'])) { echo 'checked="checked"'; } ?> /><?php _e($post_type); ?>
-	<?php
+		$check_status = '';
+		if(isset($current_signature['signature_include_types']) && in_array($post_type, $current_signature['signature_include_types'])) {
+			$check_status = 'checked="checked"';
+		}
+		?>
+		<input type="checkbox" name="signature_include_types[]" value="<?php echo $post_type; ?>" <?php echo $check_status; ?> /><?php _e($post_type); ?><br />
+		<?php
 	}
 	?>
+	<p><a href="javascript:void(0)" onclick="checkAll('signature_include_types[]')"><?php _e('check all', 'wp-post-signature'); ?></a> |
+	<a href="javascript:void(0)" onclick="checkReverse('signature_include_types[]')"><?php _e('check reverse', 'wp-post-signature'); ?></a></p>
 	<br />
 
 	<p><?php _e('Which categories should the signature be placed?', 'wp-post-signature'); ?></p>
