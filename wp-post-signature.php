@@ -21,14 +21,14 @@ class WPPostSignature {
 function is_str_and_not_empty($var) {
 	if (!is_string($var))
 		return false;
-	
+
 	if (empty($var))
 		return false;
-	
+
 	if ($var=='')
 		return false;
-	
-	return true; 
+
+	return true;
 }
 
 function AppendSignature($content) {
@@ -38,30 +38,16 @@ function AppendSignature($content) {
 	$categories = get_the_category($post->ID);
 	$wp_post_signature = maybe_unserialize(get_option('wp_post_signature'));
 	$current_signature = $wp_post_signature[$author];
+	$post_type = get_post_type($post);
 
 	if(!isset($current_signature['signature_switch']) || $current_signature['signature_switch'] == 'no') {
 		return $content;
 	}
 
 	if(isset($current_signature['signature_include_types'])){
-		if(!is_singular()) {
-			if(!in_array('postlist', $current_signature['signature_include_types'])) {
-				return $content;
-			}
-		}else if(is_single()) {
-			if(!in_array('post', $current_signature['signature_include_types'])) {
-				return $content;
-			}
-		}else if(is_page()) {
-			if(!in_array('page', $current_signature['signature_include_types'])) {
-				return $content;
-			}
-		}else {
-			if(!in_array('other', $current_signature['signature_include_types'])) {
-				return $content;
-			}
+		if(!in_array($post_type, $current_signature['signature_include_types'])) {
+			return $content;
 		}
-
 	}else if(!is_singular()) {	// for compatible with v 0.2.0 and before
 		if(!isset($current_signature['signature_archive_list_switch']) || $current_signature['signature_archive_list_switch'] != 'yes') {
 			return $content;
@@ -171,7 +157,7 @@ require_once(trailingslashit(dirname(__FILE__)) . "wp-post-signature-page.php");
 
 if(class_exists('WPPostSignaturePage')) {
 	$wppostsignature_page = new WPPostSignaturePage();
-	
+
 	if(isset($wppostsignature_page)) {
 		add_action('admin_menu', array(&$wppostsignature_page, 'WPPostSignature_Menu'), 1);
 	}

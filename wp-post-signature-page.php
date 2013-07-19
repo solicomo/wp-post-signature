@@ -12,7 +12,7 @@ if(isset($_POST['wpps_update_options'])) {
 		get_currentuserinfo();
 		$wp_post_signature = maybe_unserialize(get_option('wp_post_signature'));
 		$wp_post_signature[$current_user->ID] = $_POST;
-		
+
 		$categories = get_categories('hide_empty=0');
 		$exclude_cates = array();
 		$i = 0;
@@ -23,7 +23,7 @@ if(isset($_POST['wpps_update_options'])) {
 			}
 		}
 		$wp_post_signature[$current_user->ID]['signature_exclude_cates'] = $exclude_cates;
-	
+
 		update_option("wp_post_signature", maybe_serialize($wp_post_signature));
 		$wpps_status = 'update_success';
 	}
@@ -106,15 +106,19 @@ function WPPostSignature_Options_Page() {
 	<input type="radio" name="signature_pos" value="bottom" <?php if($current_signature['signature_pos'] == 'bottom') { echo 'checked="checked"'; } ?> /><?php _e('Bottom', 'wp-post-signature'); ?><br />
 
 	<p><?php _e('Which types of content should the signature be placed?', 'wp-post-signature'); ?></p>
-	<input type="checkbox" name="signature_include_types[]" value="post" <?php if(isset($current_signature['signature_include_types']) && in_array('post', $current_signature['signature_include_types'])) { echo 'checked="checked"'; } ?> /><?php _e('Post', 'wp-post-signature'); ?>
-	<input type="checkbox" name="signature_include_types[]" value="postlist" <?php if(isset($current_signature['signature_include_types']) && in_array('postlist', $current_signature['signature_include_types'])) { echo 'checked="checked"'; } ?> /><?php _e('Post List', 'wp-post-signature'); ?>
-	<input type="checkbox" name="signature_include_types[]" value="page" <?php if(isset($current_signature['signature_include_types']) && in_array('page', $current_signature['signature_include_types'])) { echo 'checked="checked"'; } ?> /><?php _e('Page', 'wp-post-signature'); ?>
-	<input type="checkbox" name="signature_include_types[]" value="other" <?php if(isset($current_signature['signature_include_types']) && in_array('other', $current_signature['signature_include_types'])) { echo 'checked="checked"'; } ?> /><?php _e('Other', 'wp-post-signature'); ?>
-<br />
+	<?php
+	$post_types = get_post_types();
+	foreach ($post_types as $post_type ) {
+	?>
+		<input type="checkbox" name="signature_include_types[]" value="<?php echo $post_type; ?>" <?php if(isset($current_signature['signature_include_types']) && in_array($post_type, $current_signature['signature_include_types'])) { echo 'checked="checked"'; } ?> /><?php _e($post_type); ?>
+	<?php
+	}
+	?>
+	<br />
 
 	<p><?php _e('Which categories should the signature be placed?', 'wp-post-signature'); ?></p>
 	<?php
-		$categories = get_categories('hide_empty=0'); 
+		$categories = get_categories('hide_empty=0');
 		foreach ($categories as $category) {
 			$opts = '<input type="checkbox" name="signature_include_cates[]" value="' . $category->cat_ID . '"';
 			if(!in_array($category->cat_ID, $current_signature['signature_exclude_cates'])){
@@ -124,9 +128,9 @@ function WPPostSignature_Options_Page() {
 			echo $opts;
 		}
 	?>
-	<p><a href="javascript:void(0)" onclick="checkAll('signature_include_cates[]')"><?php _e('check all', 'wp-post-signature'); ?></a> | 
-	<a href="javascript:void(0)" onclick="checkReverse('signature_include_cates[]')"><?php _e('check reverse', 'wp-post-signature'); ?></a></p> 
-		
+	<p><a href="javascript:void(0)" onclick="checkAll('signature_include_cates[]')"><?php _e('check all', 'wp-post-signature'); ?></a> |
+	<a href="javascript:void(0)" onclick="checkReverse('signature_include_cates[]')"><?php _e('check reverse', 'wp-post-signature'); ?></a></p>
+
 	<script type="text/javascript">
 	//全选
 	function checkAll(name){
