@@ -120,7 +120,6 @@ function WPPostSignature_Options_Page() {
 	?>
 	<p><a href="javascript:void(0)" onclick="checkAll('signature_include_types[]')"><?php _e('check all', 'wp-post-signature'); ?></a> |
 	<a href="javascript:void(0)" onclick="checkReverse('signature_include_types[]')"><?php _e('check reverse', 'wp-post-signature'); ?></a></p>
-	<br />
 
 	<p><?php _e('Which categories should the signature be placed?', 'wp-post-signature'); ?></p>
 	<?php
