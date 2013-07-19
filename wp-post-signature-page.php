@@ -106,8 +106,8 @@ function WPPostSignature_Options_Page() {
 	<input type="radio" name="signature_pos" value="bottom" <?php if($current_signature['signature_pos'] == 'bottom') { echo 'checked="checked"'; } ?> /><?php _e('Bottom', 'wp-post-signature'); ?><br />
 
 	<p><?php _e('Will the signature be appended to the posts in archive or category list?', 'wp-post-signature'); ?></p>
-	<input type="radio" name="signature_list_switch" value="yes" <?php if(isset($current_signature['signature_include_types']) && $current_signature['signature_list_switch'] == 'yes') { echo 'checked="checked"'; } ?> /><?php _e('Yes', 'wp-post-signature'); ?>
-	<input type="radio" name="signature_list_switch" value="no" <?php if(isset($current_signature['signature_include_types']) && $current_signature['signature_list_switch'] == 'no') { echo 'checked="checked"'; } ?> /><?php _e('No', 'wp-post-signature'); ?>
+	<input type="radio" name="signature_list_switch" value="yes" <?php if(array_key_exists('signature_include_types', $current_signature) && $current_signature['signature_list_switch'] == 'yes') { echo 'checked="checked"'; } ?> /><?php _e('Yes', 'wp-post-signature'); ?>
+	<input type="radio" name="signature_list_switch" value="no" <?php if(array_key_exists('signature_include_types', $current_signature) && $current_signature['signature_list_switch'] == 'no') { echo 'checked="checked"'; } ?> /><?php _e('No', 'wp-post-signature'); ?>
 	<br />
 
 	<p><?php _e('Which types of content should the signature be placed?', 'wp-post-signature'); ?></p>

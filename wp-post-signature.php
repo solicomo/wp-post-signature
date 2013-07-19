@@ -40,17 +40,17 @@ function AppendSignature($content) {
 	$current_signature = $wp_post_signature[$author];
 	$post_type = get_post_type($post);
 
-	if(!isset($current_signature['signature_switch']) || $current_signature['signature_switch'] == 'no') {
+	if(!array_key_exists('signature_switch', $current_signature) || $current_signature['signature_switch'] != 'yes') {
 		return $content;
 	}
 
 	if(!is_singular()) {
-		if(!isset($current_signature['signature_list_switch']) || $current_signature['signature_list_switch'] != 'yes') {
+		if(!array_key_exists('signature_list_switch', $current_signature) || $current_signature['signature_list_switch'] != 'yes') {
 			return $content;
 		}
 	}
 
-	if(isset($current_signature['signature_include_types'])){
+	if(array_key_exists('signature_include_types', $current_signature)){
 		if(!is_singular()) {
 			if(!in_array('postlist', $current_signature['signature_include_types'])) {
 				return $content;
@@ -62,7 +62,7 @@ function AppendSignature($content) {
 		}
 	}
 
-	if(isset($current_signature['signature_exclude_cates'])){
+	if(array_key_exists('signature_exclude_cates', $current_signature)){
 		foreach ($categories as $category) {
 			if(in_array($category->cat_ID, $current_signature['signature_exclude_cates'])){
 				return $content;
