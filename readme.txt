@@ -29,6 +29,9 @@ This plugin allows you to append a signature after every post.
 
 == Changelog ==
 
+= 0.2.4 =
+* bug fix 
+
 = 0.2.3 =
 * Will the signature be appended to the posts in archive or category list?
 
