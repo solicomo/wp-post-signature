@@ -29,6 +29,9 @@ This plugin allows you to append a signature after every post.
 
 == Changelog ==
 
+= 0.2.8 =
+* fix bug for the posts that have no excerpt.
+
 = 0.2.7 =
 * fix bug for those themes who prefer the_excerpt to the_content.
 * Tested up to: 3.8.2.
