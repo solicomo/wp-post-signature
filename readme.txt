@@ -2,8 +2,8 @@
 Contributors: Soli
 Tags: wordpress,post signature
 Requires at least: 3.0
-Tested up to: 3.8.2
-Stable tag: 0.2.6
+Tested up to: 3.9.0
+Stable tag: 0.2.8
 
 This plugin allows you to append a signature after every post. Some variables can be used.
 
@@ -28,6 +28,10 @@ This plugin allows you to append a signature after every post.
 1. The settings menu
 
 == Changelog ==
+
+= 0.2.9 =
+* fix "Undefined index" bug.
+* Tested up to: 3.9.0.
 
 = 0.2.8 =
 * fix bug for the posts that have no excerpt.

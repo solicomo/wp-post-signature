@@ -193,7 +193,7 @@ function WPPostSignature_Options_Page() {
 	<!--setting end-->
 
 	<!--others-->
-	<div id="wpps-info" class="postbox">
+	<div id="wpps-info" class="postbox" style="padding: 10px;">
 	<h3 class="hndle"><?php _e('Supported variables:', 'wp-post-signature'); ?></h3>
 
 	<table class="form-table">
