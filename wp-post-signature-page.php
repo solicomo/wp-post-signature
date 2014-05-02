@@ -130,7 +130,9 @@ function WPPostSignature_Options_Page() {
 	$post_types = get_post_types();
 	foreach ($post_types as $post_type ) {
 		$check_status = '';
-		if(isset($current_signature['signature_include_types']) && in_array($post_type, $current_signature['signature_include_types'])) {
+		if(isset($current_signature['signature_include_types'])
+			&& is_array($current_signature['signature_include_types'])
+			&& in_array($post_type, $current_signature['signature_include_types'])) {
 			$check_status = 'checked="checked"';
 		}
 		?>
@@ -146,7 +148,11 @@ function WPPostSignature_Options_Page() {
 		$categories = get_categories('hide_empty=0');
 		foreach ($categories as $category) {
 			$opts = '<input type="checkbox" name="signature_include_cates[]" value="' . $category->cat_ID . '"';
-			if(!in_array($category->cat_ID, $current_signature['signature_exclude_cates'])){
+			if(array_key_exists('signature_exclude_cates', $current_signature)
+				&& is_array($current_signature['signature_exclude_cates'])
+				&& in_array($category->cat_ID, $current_signature['signature_exclude_cates'])){
+				//do nothing
+			} else {
 				$opts .= 'checked="checked"';
 			}
 			$opts .= 	' />' .  $category->cat_name . '<br />';
