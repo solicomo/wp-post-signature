@@ -29,6 +29,9 @@ This plugin allows you to append a signature after every post.
 
 == Changelog ==
 
+= 0.2.11 =
+* fix warning.
+
 = 0.2.10 =
 * fix warning.
 

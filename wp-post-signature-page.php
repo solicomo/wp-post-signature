@@ -5,19 +5,27 @@ WP Post Signature Page
 
 $wpps_status = "normal";
 
-if(isset($_POST['wpps_update_options'])) {
-	if($_POST['wpps_update_options'] == 'Y') {
+if(is_array($_POST) && array_key_exists('wpps_update_options', $_POST)) {
+	if($_POST['wpps_update_options'] === 'Y') {
 		global $current_user;
 		require (ABSPATH . WPINC . '/pluggable.php');
 		get_currentuserinfo();
 		$wp_post_signature = maybe_unserialize(get_option('wp_post_signature'));
+
+		if (!is_array($wp_post_signature)) {
+			$wp_post_signature = array();
+		}
 		$wp_post_signature[$current_user->ID] = $_POST;
 
 		$categories = get_categories('hide_empty=0');
 		$exclude_cates = array();
 		$i = 0;
 		foreach ($categories as $category) {
-			if(!in_array($category->cat_ID, $_POST['signature_include_cates'])){
+			if(array_key_exists('signature_include_cates', $_POST)
+				&& is_array($_POST['signature_include_cates'])
+				&& in_array($category->cat_ID, $_POST['signature_include_cates'])){
+				// do nothing
+			} else {
 				$exclude_cates[$i] = $category->cat_ID;
 				$i++;
 			}
@@ -31,7 +39,37 @@ if(isset($_POST['wpps_update_options'])) {
 
 if(!class_exists('WPPostSignaturePage')) {
 class WPPostSignaturePage {
-function WPPostSignature_Options_Page() {
+
+private function getBool($a, $k)
+{
+	if (is_array($a) && array_key_exists($k, $a)) {
+		return ($a[$k] === true);
+	}
+	return false;
+}
+
+private function getStr($a, $k)
+{
+	if (is_array($a) && array_key_exists($k, $a)) {
+		if (is_string($a[$k])) {
+			return $a[$k];
+		}
+	}
+	return '';
+}
+
+private function getArray($a, $k)
+{
+	if (is_array($a) && array_key_exists($k, $a)) {
+		if (is_array($a[$k])) {
+			return $a[$k];
+		}
+	}
+	return array();
+}
+
+public function WPPostSignature_Options_Page()
+{
 	?>
 
 	<div class="wrap">
@@ -100,29 +138,33 @@ function WPPostSignature_Options_Page() {
 		global $current_user;
 		get_currentuserinfo();
 		$wp_post_signature = maybe_unserialize(get_option('wp_post_signature'));
-		$current_signature = $wp_post_signature[$current_user->ID];
+		$current_signature = array();
+
+		if (is_array($wp_post_signature) && array_key_exists($current_user->ID, $wp_post_signature)) {
+			$current_signature = $wp_post_signature[$current_user->ID];
+		}
 	?>
 	<form method="post" action="<?php echo get_bloginfo("wpurl"); ?>/wp-admin/options-general.php?page=wp-post-signature">
 	<div style="padding-left: 10px;">
 	<input type="hidden" name="wpps_update_options" value="Y">
 
 	<p><?php _e('Enter your post signature in the text area below. HTML markup is allowed.', 'wp-post-signature'); ?></p>
-	<textarea cols="75" rows="5" name="signature_text"><?php echo stripslashes($current_signature['signature_text']); ?></textarea><br />
+	<textarea cols="75" rows="5" name="signature_text"><?php echo stripslashes($this->getStr($current_signature, 'signature_text')); ?></textarea><br />
 	<p><?php _e('Will the signature be on or off by default?', 'wp-post-signature'); ?></p>
-	<input type="radio" name="signature_switch" value="yes" <?php if($current_signature['signature_switch'] == 'yes') { echo 'checked="checked"'; } ?> /><?php _e('On', 'wp-post-signature'); ?>
-	<input type="radio" name="signature_switch" value="no" <?php if($current_signature['signature_switch'] == 'no') { echo 'checked="checked"'; } ?> /><?php _e('Off', 'wp-post-signature'); ?><br />
+	<input type="radio" name="signature_switch" value="yes" <?php if($this->getStr($current_signature, 'signature_switch') == 'yes') { echo 'checked="checked"'; } ?> /><?php _e('On', 'wp-post-signature'); ?>
+	<input type="radio" name="signature_switch" value="no" <?php if($this->getStr($current_signature, 'signature_switch') == 'no') { echo 'checked="checked"'; } ?> /><?php _e('Off', 'wp-post-signature'); ?><br />
 
 	<p><?php _e('Where should the signature be placed?', 'wp-post-signature'); ?></p>
-	<input type="radio" name="signature_pos" value="top" <?php if($current_signature['signature_pos'] == 'top') { echo 'checked="checked"'; } ?> /><?php _e('Top', 'wp-post-signature'); ?>
-	<input type="radio" name="signature_pos" value="bottom" <?php if($current_signature['signature_pos'] == 'bottom') { echo 'checked="checked"'; } ?> /><?php _e('Bottom', 'wp-post-signature'); ?><br />
+	<input type="radio" name="signature_pos" value="top" <?php if($this->getStr($current_signature, 'signature_pos') == 'top') { echo 'checked="checked"'; } ?> /><?php _e('Top', 'wp-post-signature'); ?>
+	<input type="radio" name="signature_pos" value="bottom" <?php if($this->getStr($current_signature, 'signature_pos') == 'bottom') { echo 'checked="checked"'; } ?> /><?php _e('Bottom', 'wp-post-signature'); ?><br />
 
 	<p><?php _e('Will the signature be appended to the excerpts of posts?', 'wp-post-signature'); ?></p>
-	<input type="radio" name="signature_excerpt" value="yes" <?php if($current_signature['signature_excerpt'] == 'yes') { echo 'checked="checked"'; } ?> /><?php _e('On', 'wp-post-signature'); ?>
-	<input type="radio" name="signature_excerpt" value="no" <?php if($current_signature['signature_excerpt'] == 'no') { echo 'checked="checked"'; } ?> /><?php _e('Off', 'wp-post-signature'); ?><br />
+	<input type="radio" name="signature_excerpt" value="yes" <?php if($this->getStr($current_signature, 'signature_excerpt') == 'yes') { echo 'checked="checked"'; } ?> /><?php _e('On', 'wp-post-signature'); ?>
+	<input type="radio" name="signature_excerpt" value="no" <?php if($this->getStr($current_signature, 'signature_excerpt') == 'no') { echo 'checked="checked"'; } ?> /><?php _e('Off', 'wp-post-signature'); ?><br />
 
 	<p><?php _e('Will the signature be appended to the posts in archive or category list?', 'wp-post-signature'); ?></p>
-	<input type="radio" name="signature_list_switch" value="yes" <?php if(array_key_exists('signature_list_switch', $current_signature) && $current_signature['signature_list_switch'] == 'yes') { echo 'checked="checked"'; } ?> /><?php _e('Yes', 'wp-post-signature'); ?>
-	<input type="radio" name="signature_list_switch" value="no" <?php if(array_key_exists('signature_list_switch', $current_signature) && $current_signature['signature_list_switch'] == 'no') { echo 'checked="checked"'; } ?> /><?php _e('No', 'wp-post-signature'); ?>
+	<input type="radio" name="signature_list_switch" value="yes" <?php if($this->getStr($current_signature, 'signature_list_switch') == 'yes') { echo 'checked="checked"'; } ?> /><?php _e('Yes', 'wp-post-signature'); ?>
+	<input type="radio" name="signature_list_switch" value="no" <?php if($this->getStr($current_signature, 'signature_list_switch') == 'no') { echo 'checked="checked"'; } ?> /><?php _e('No', 'wp-post-signature'); ?>
 	<br />
 
 	<p><?php _e('Which types of content should the signature be placed?', 'wp-post-signature'); ?></p>
@@ -130,9 +172,7 @@ function WPPostSignature_Options_Page() {
 	$post_types = get_post_types();
 	foreach ($post_types as $post_type ) {
 		$check_status = '';
-		if(isset($current_signature['signature_include_types'])
-			&& is_array($current_signature['signature_include_types'])
-			&& in_array($post_type, $current_signature['signature_include_types'])) {
+		if(in_array($post_type, $this->getArray($current_signature, 'signature_include_types'))) {
 			$check_status = 'checked="checked"';
 		}
 		?>
@@ -148,14 +188,12 @@ function WPPostSignature_Options_Page() {
 		$categories = get_categories('hide_empty=0');
 		foreach ($categories as $category) {
 			$opts = '<input type="checkbox" name="signature_include_cates[]" value="' . $category->cat_ID . '"';
-			if(array_key_exists('signature_exclude_cates', $current_signature)
-				&& is_array($current_signature['signature_exclude_cates'])
-				&& in_array($category->cat_ID, $current_signature['signature_exclude_cates'])){
+			if(in_array($category->cat_ID, $this->getArray($current_signature, 'signature_exclude_cates'))){
 				//do nothing
 			} else {
 				$opts .= 'checked="checked"';
 			}
-			$opts .= 	' />' .  $category->cat_name . '<br />';
+			$opts .= ' />' . $category->cat_name . '<br />';
 			echo $opts;
 		}
 	?>
@@ -342,7 +380,7 @@ function WPPostSignature_Options_Page() {
 }
 
 function WPPostSignature_Menu() {
-	add_options_page(__('WP Post Signature'), __('WP Post Signature'), 'publish_posts', 'wp-post-signature', array(__CLASS__,'WPPostSignature_Options_Page'));
+	add_options_page(__('WP Post Signature'), __('WP Post Signature'), 'publish_posts', 'wp-post-signature', array($this,'WPPostSignature_Options_Page'));
 }
 
 } // end of class WPPostSignaturePage
