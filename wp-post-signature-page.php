@@ -5,23 +5,40 @@ WP Post Signature Page
 
 $wpps_status = "normal";
 
-if(is_array($_POST) && array_key_exists('wpps_update_options', $_POST)) {
-	if($_POST['wpps_update_options'] === 'Y') {
-		global $current_user;
-		require (ABSPATH . WPINC . '/pluggable.php');
-		get_currentuserinfo();
+if(is_array($_POST) && array_key_exists('wpps_update_options', $_POST) && $_POST['wpps_update_options'] === 'Y') {
+	// global
+	if (is_array($_GET) && array_key_exists('type', $_GET) && $_GET['type'] === 'global' && current_user_can('activate_plugins')) {
+
+		$wp_post_signature_global = maybe_unserialize(get_option('wp_post_signature_global'));
+
+		if (!is_array($wp_post_signature_global)) {
+			$wp_post_signature_global = array();
+		}
+
+		if (array_key_exists('signature_global_priority', $_POST)) {
+			$wp_post_signature_global['signature_global_priority'] = intval($_POST['signature_global_priority']);
+		}
+
+		update_option("wp_post_signature_global", maybe_serialize($wp_post_signature_global));
+		$wpps_status = 'update_success';
+	}
+
+	// for user
+	if (is_array($_GET) && array_key_exists('type', $_GET) && $_GET['type'] === 'user') {
+
+		$current_user_id = get_current_user_id();
 		$wp_post_signature = maybe_unserialize(get_option('wp_post_signature'));
 
 		if (!is_array($wp_post_signature)) {
 			$wp_post_signature = array();
 		}
-		$wp_post_signature[$current_user->ID] = $_POST;
+		$wp_post_signature[$current_user_id] = $_POST;
 
 		$categories = get_categories('hide_empty=0');
 		$exclude_cates = array();
 		$i = 0;
 		foreach ($categories as $category) {
-			if(array_key_exists('signature_include_cates', $_POST)
+			if (array_key_exists('signature_include_cates', $_POST)
 				&& is_array($_POST['signature_include_cates'])
 				&& in_array($category->cat_ID, $_POST['signature_include_cates'])){
 				// do nothing
@@ -30,7 +47,7 @@ if(is_array($_POST) && array_key_exists('wpps_update_options', $_POST)) {
 				$i++;
 			}
 		}
-		$wp_post_signature[$current_user->ID]['signature_exclude_cates'] = $exclude_cates;
+		$wp_post_signature[$current_user_id]['signature_exclude_cates'] = $exclude_cates;
 
 		update_option("wp_post_signature", maybe_serialize($wp_post_signature));
 		$wpps_status = 'update_success';
@@ -131,20 +148,52 @@ public function WPPostSignature_Options_Page()
 	<div class="metabox-holder">
 	<div class="meta-box-sortabless">
 
+	<!--global setting-->
+	<div id="wpps-setting-global" class="postbox">
+	<h3 class="hndle"><?php _e('Global Settings', 'wp-post-signature'); ?></h3>
+	<?php
+		$wp_post_signature_global = maybe_unserialize(get_option('wp_post_signature_global'));
+	?>
+	<form method="post" action="<?php echo get_bloginfo("wpurl"); ?>/wp-admin/options-general.php?page=wp-post-signature&type=global">
+	<div style="padding-left: 10px;">
+	<input type="hidden" name="wpps_update_options" value="Y">
+
+	<p><?php _e('The order in which this plugin is executed. The lower the earlier.', 'wp-post-signature'); ?></p>
+	<select name="signature_global_priority">
+		<?php
+		$i = 1;
+		$saved = intval($this->getStr($wp_post_signature_global, 'signature_global_priority'));
+		$saved = ($saved < 1 || $saved > 10 ? 10 : $saved);
+		do {
+			echo '<option ';
+			selected( $saved, $i );
+			echo ' value="'.$i.'">'.$i.'</option>';
+			$i++;
+		} while ($i < 11);
+		?>
+	</select>
+
+	<p class="submit">
+	<input type="submit" name="Submit" value="<?php _e('Save Changes', 'wp-post-signature'); ?>" />
+	</p>
+	</div>
+	</form>
+	</div>
+	<!--global setting end-->
+
 	<!--setting-->
 	<div id="wpps-setting" class="postbox">
-	<h3 class="hndle"><?php _e('Settings', 'wp-post-signature'); ?></h3>
+	<h3 class="hndle"><?php _e('User Settings', 'wp-post-signature'); ?></h3>
 	<?php
-		global $current_user;
-		get_currentuserinfo();
+		$current_user_id = get_current_user_id();
 		$wp_post_signature = maybe_unserialize(get_option('wp_post_signature'));
 		$current_signature = array();
 
-		if (is_array($wp_post_signature) && array_key_exists($current_user->ID, $wp_post_signature)) {
-			$current_signature = $wp_post_signature[$current_user->ID];
+		if (is_array($wp_post_signature) && array_key_exists($current_user_id, $wp_post_signature)) {
+			$current_signature = $wp_post_signature[$current_user_id];
 		}
 	?>
-	<form method="post" action="<?php echo get_bloginfo("wpurl"); ?>/wp-admin/options-general.php?page=wp-post-signature">
+	<form method="post" action="<?php echo get_bloginfo("wpurl"); ?>/wp-admin/options-general.php?page=wp-post-signature&type=user">
 	<div style="padding-left: 10px;">
 	<input type="hidden" name="wpps_update_options" value="Y">
 

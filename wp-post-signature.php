@@ -154,8 +154,14 @@ function RegisterPluginLinks($links, $file) {
  */
 function ActivatePlugin() {
 	$optfile = trailingslashit(dirname(__FILE__)) . "options.txt";
-	$options = file_get_contents($optfile);
-	add_option("wp_post_signature", $options, null, 'no');
+	$options = maybe_unserialize(file_get_contents($optfile));
+
+	if (is_array($options) && array_key_exists('users', $options) && array_key_exists('global', $options)) {
+		add_option("wp_post_signature", $options['users'], null, 'no');
+		add_option("wp_post_signature_global", $options['global'], null, 'no');
+	} else { // < v0.3.0
+		add_option("wp_post_signature", $options, null, 'no');
+	}
 }
 
 /**
@@ -163,8 +169,12 @@ function ActivatePlugin() {
  */
 function DeactivatePlugin() {
 	$optfile = trailingslashit(dirname(__FILE__)) . "options.txt";
-	file_put_contents($optfile, get_option("wp_post_signature"));
+	$options = array();
+	$options['users'] = get_option("wp_post_signature");
+	$options['global'] = get_option("wp_post_signature_global");
+	file_put_contents($optfile, $options);
 	delete_option("wp_post_signature");
+	delete_option("wp_post_signature_global");
 }
 
 } // end of class WPPostSignature
@@ -184,8 +194,14 @@ if(class_exists('WPPostSignature')) {
 		add_filter('plugin_row_meta', array(&$wppostsignature, 'RegisterPluginLinks'),10,2);
 
 		//Add the filter
-		add_filter('the_content', array(&$wppostsignature, 'AppendSignature'));
-		add_filter('the_excerpt', array(&$wppostsignature, 'AppendSignatureExcerpt'));
+		$priority = 10;
+		$wp_post_signature_global = maybe_unserialize(get_option('wp_post_signature_global'));
+		if (is_array($wp_post_signature_global) && key_exists('signature_global_priority', $wp_post_signature_global)) {
+			$priority = intval($wp_post_signature_global['signature_global_priority']);
+		}
+		$priority = ($priority > 10 || $priority < 1) ? 10 : $priority;
+		add_filter('the_content', array(&$wppostsignature, 'AppendSignature'), $priority);
+		add_filter('the_excerpt', array(&$wppostsignature, 'AppendSignatureExcerpt'), $priority);
 	}
 }
 
