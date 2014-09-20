@@ -157,6 +157,7 @@ public function WPPostSignature_Options_Page()
 	<div class="metabox-holder">
 	<div class="meta-box-sortabless">
 
+	<?php if (current_user_can('activate_plugins')) { ?>
 	<!--global setting-->
 	<div id="wpps-setting-global" class="postbox">
 	<h3 class="hndle"><?php _e('Global Settings', 'wp-post-signature'); ?></h3>
@@ -189,6 +190,7 @@ public function WPPostSignature_Options_Page()
 	</form>
 	</div>
 	<!--global setting end-->
+	<?php } ?>
 
 	<!--setting-->
 	<div id="wpps-setting" class="postbox">
