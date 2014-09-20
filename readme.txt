@@ -31,6 +31,7 @@ This plugin allows you to append a signature after every post.
 
 = 0.3.0 =
 * add "Global Settings".
+* now you can control the priority of the plugin.
 * Tested up to: 4.0.
 
 = 0.2.11 =

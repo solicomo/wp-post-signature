@@ -2,6 +2,7 @@
 /*
 WP Post Signature Page
 */
+require_once ABSPATH . WPINC . '/pluggable.php';
 
 $wpps_status = "normal";
 
@@ -56,6 +57,14 @@ if(is_array($_POST) && array_key_exists('wpps_update_options', $_POST) && $_POST
 
 if(!class_exists('WPPostSignaturePage')) {
 class WPPostSignaturePage {
+
+private function getValue($a, $k)
+{
+	if (is_array($a) && array_key_exists($k, $a)) {
+		return ($a[$k]);
+	}
+	return NULL;
+}
 
 private function getBool($a, $k)
 {
@@ -162,7 +171,7 @@ public function WPPostSignature_Options_Page()
 	<select name="signature_global_priority">
 		<?php
 		$i = 1;
-		$saved = intval($this->getStr($wp_post_signature_global, 'signature_global_priority'));
+		$saved = intval($this->getValue($wp_post_signature_global, 'signature_global_priority'));
 		$saved = ($saved < 1 || $saved > 10 ? 10 : $saved);
 		do {
 			echo '<option ';
