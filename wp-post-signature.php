@@ -144,7 +144,7 @@ function RegisterPluginLinks($links, $file) {
 	$base = plugin_basename(__FILE__);
 	if ($file ==$base) {
 		$links[] = '<a href="options-general.php?page=wp-post-signature">' . __('Settings','wp-post-signature') . '</a>';
-		$links[] = '<a href="http://www.cbug.org/category/wp-post-signature">' . __('FAQ','wp-post-signature') . '</a>';
+		$links[] = '<a href="http://cbug.org/tag/wp-post-signature/">' . __('FAQ','wp-post-signature') . '</a>';
 	}
 	return $links;
 }
