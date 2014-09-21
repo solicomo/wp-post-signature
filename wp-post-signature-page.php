@@ -445,4 +445,4 @@ function WPPostSignature_Menu() {
 
 } // end of class WPPostSignaturePage
 } // end of if(!class_exists('WPPostSignaturePage'))
-?>
+
