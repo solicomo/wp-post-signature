@@ -10,7 +10,7 @@ Text Domain: wp-post-signature
 Domain Path: /lang
 
 
-Copyright (c) 2011 - 2014
+Copyright (c) 2011 - 2015
 Released under the GPL license
 http://www.gnu.org/licenses/gpl.txt
 */
