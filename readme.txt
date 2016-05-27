@@ -29,9 +29,11 @@ This plugin allows you to append a signature after every post.
 
 == Changelog ==
 
+= 0.3.2 =
+* fix security issues.
+
 = 0.3.1 =
 * Tested up to: 4.1.1.
-
 
 = 0.3.0 =
 * add "Global Settings".

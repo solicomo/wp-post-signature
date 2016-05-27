@@ -6,9 +6,14 @@ require_once ABSPATH . WPINC . '/pluggable.php';
 
 $wpps_status = "normal";
 
-if(is_array($_POST) && array_key_exists('wpps_update_options', $_POST) && $_POST['wpps_update_options'] === 'Y') {
+if (is_array($_POST) && array_key_exists('wpps_update_options', $_POST) && $_POST['wpps_update_options'] === 'Y') {
+	check_admin_referer('wpps_nonce_action', 'wpps_nonce_field');
+
+	if (!current_user_can('update_plugins'))
+		die();
+
 	// global
-	if (is_array($_GET) && array_key_exists('type', $_GET) && $_GET['type'] === 'global' && current_user_can('activate_plugins')) {
+	if (is_array($_GET) && array_key_exists('type', $_GET) && $_GET['type'] === 'global') {
 
 		$wp_post_signature_global = maybe_unserialize(get_option('wp_post_signature_global'));
 
@@ -167,6 +172,7 @@ public function WPPostSignature_Options_Page()
 	<form method="post" action="<?php echo get_bloginfo("wpurl"); ?>/wp-admin/options-general.php?page=wp-post-signature&type=global">
 	<div style="padding-left: 10px;">
 	<input type="hidden" name="wpps_update_options" value="Y">
+	<?php wp_nonce_field('wpps_nonce_action', 'wpps_nonce_field'); ?>
 
 	<p><?php _e('The order in which this plugin is executed. The lower the earlier.', 'wp-post-signature'); ?></p>
 	<select name="signature_global_priority">
