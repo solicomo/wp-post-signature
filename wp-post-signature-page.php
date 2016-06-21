@@ -9,7 +9,7 @@ $wpps_status = "normal";
 if (is_array($_POST) && array_key_exists('wpps_update_options', $_POST) && $_POST['wpps_update_options'] === 'Y') {
 	check_admin_referer('wpps_nonce_action', 'wpps_nonce_field');
 
-	if (!current_user_can('update_plugins'))
+	if (!current_user_can('publish_posts'))
 		die();
 
 	// global
@@ -162,7 +162,7 @@ public function WPPostSignature_Options_Page()
 	<div class="metabox-holder">
 	<div class="meta-box-sortabless">
 
-	<?php if (current_user_can('activate_plugins')) { ?>
+	<?php if (current_user_can('edit_plugins')) { ?>
 	<!--global setting-->
 	<div id="wpps-setting-global" class="postbox">
 	<h3 class="hndle"><?php _e('Global Settings', 'wp-post-signature'); ?></h3>
@@ -213,6 +213,7 @@ public function WPPostSignature_Options_Page()
 	<form method="post" action="<?php echo get_bloginfo("wpurl"); ?>/wp-admin/options-general.php?page=wp-post-signature&type=user">
 	<div style="padding-left: 10px;">
 	<input type="hidden" name="wpps_update_options" value="Y">
+	<?php wp_nonce_field('wpps_nonce_action', 'wpps_nonce_field'); ?>
 
 	<p><?php _e('Enter your post signature in the text area below. HTML markup is allowed.', 'wp-post-signature'); ?></p>
 	<textarea cols="75" rows="5" name="signature_text"><?php echo stripslashes($this->getStr($current_signature, 'signature_text')); ?></textarea><br />
