@@ -2,7 +2,7 @@
 /*
 WP Post Signature Page
 */
-require_once ABSPATH . WPINC . '/pluggable.php';
+//require_once ABSPATH . WPINC . '/pluggable.php';
 
 $wpps_status = "normal";
 
