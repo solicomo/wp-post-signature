@@ -29,6 +29,9 @@ This plugin allows you to append a signature after every post.
 
 == Changelog ==
 
+= 0.3.5 =
+* fix problem about pluggable.php.
+
 = 0.3.4 =
 * fix problem of overriding wp-mail function.
 

@@ -6,6 +6,7 @@ WP Post Signature Page
 
 $wpps_status = "normal";
 
+function prepare() {
 if (is_array($_POST) && array_key_exists('wpps_update_options', $_POST) && $_POST['wpps_update_options'] === 'Y') {
 	check_admin_referer('wpps_nonce_action', 'wpps_nonce_field');
 
@@ -59,6 +60,7 @@ if (is_array($_POST) && array_key_exists('wpps_update_options', $_POST) && $_POS
 		$wpps_status = 'update_success';
 	}
 }
+}
 
 if(!class_exists('WPPostSignaturePage')) {
 class WPPostSignaturePage {
@@ -101,6 +103,7 @@ private function getArray($a, $k)
 
 public function WPPostSignature_Options_Page()
 {
+	prepare();
 	?>
 
 	<div class="wrap">
