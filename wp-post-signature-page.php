@@ -476,13 +476,13 @@ public function WPPostSignature_Options_Page()
 	<tr>
 	<th scope="row">%author_meta_description%</th>
 	<td><?php _e("The author's biographical info.(With HTML line breaks inserted before all newlines.)", 'wp-post-signature'); ?></td>
-	<td>I'm a coder.<code><br /></code><br />I write code.</td>
+	<td>I'm a coder.&lt;br /&gt;<br />I write code.</td>
 	</tr>
 
 	<tr>
 	<th scope="row">%author_meta_avatar%</th>
 	<td><?php _e("The author's avatar", 'wp-post-signature'); ?></td>
-	<td><code><img alt="" src="http://url.to/avatar.jpg" class="avatar avatar-96" width="96" height="96"></code></td>
+	<td>&lt;img alt="" src="http://url.to/avatar.jpg" class="avatar avatar-96" width="96" height="96"&gt;</td>
 	</tr>
 
 	</table>
