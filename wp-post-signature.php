@@ -3,7 +3,7 @@
 Plugin Name: WP Post Signature
 Plugin URI: http://wordpress.org/extend/plugins/wp-post-signature/
 Description: This plugin allows you to append a signature after every post. Some variables can be used, such as %post_title%, %post_link%, %bloginfo_name%, %bloginfo_url%, and so on. It supports multiuser.
-Version: 0.3.6
+Version: 0.3.7
 Author: Soli
 Author URI: https://solicomo.com
 Text Domain: wp-post-signature
@@ -133,8 +133,12 @@ function AppendSignature($content) {
 	$env_vars['%author_meta_description%']      = nl2br(get_the_author_meta('user_description'));
 	$env_vars['%author_meta_avatar%']           = get_avatar(get_the_author_meta('ID'));
 
-	if ($current_signature['signature_pos'] == 'custom' && array_key_exists('signature_pos_mark', $current_signature) && !empty($current_signature['signature_pos_mark'])) {
-		return str_replace($current_signature['signature_pos_mark'], strtr(stripslashes($current_signature['signature_text']), $env_vars), $content);
+	if ($current_signature['signature_pos'] == 'custom') {
+		$signature_post_mark = '<!-- SIGNATURE_MARK -->';
+		if (array_key_exists('signature_pos_mark', $current_signature) && !empty($current_signature['signature_pos_mark'])) {
+			$signature_post_mark = $current_signature['signature_pos_mark'];
+		}
+		return str_replace($signature_post_mark, strtr(stripslashes($current_signature['signature_text']), $env_vars), $content);
 	} else if($current_signature['signature_pos'] == 'top') {
 		return strtr(stripslashes($current_signature['signature_text']), $env_vars) . $content;
 	} else {

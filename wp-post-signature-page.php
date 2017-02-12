@@ -228,7 +228,7 @@ public function WPPostSignature_Options_Page()
 	<input type="radio" name="signature_pos" value="top" <?php if($this->getStr($current_signature, 'signature_pos') == 'top') { echo 'checked="checked"'; } ?> /><?php _e('Top', 'wp-post-signature'); ?>
 	<input type="radio" name="signature_pos" value="bottom" <?php if($this->getStr($current_signature, 'signature_pos') == 'bottom') { echo 'checked="checked"'; } ?> /><?php _e('Bottom', 'wp-post-signature'); ?>
 	<input type="radio" name="signature_pos" value="custom" <?php if($this->getStr($current_signature, 'signature_pos') == 'custom') { echo 'checked="checked"'; } ?> /><?php _e('Custom', 'wp-post-signature'); ?>
-	<input type="text" name="signature_pos_mark" value="<?php echo stripslashes($this->getStr($current_signature, 'signature_pos_mark')); ?> /><br />
+	<input type="text" name="signature_pos_mark" value="<?php echo stripslashes($this->getStr($current_signature, 'signature_pos_mark')); ?>" placeholder="<!-- SIGNATURE_MARK -->" /><br />
 
 	<p><?php _e('Will the signature be appended to the excerpts of posts?', 'wp-post-signature'); ?></p>
 	<input type="radio" name="signature_excerpt" value="yes" <?php if($this->getStr($current_signature, 'signature_excerpt') == 'yes') { echo 'checked="checked"'; } ?> /><?php _e('On', 'wp-post-signature'); ?>
