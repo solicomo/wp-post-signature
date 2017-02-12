@@ -3,7 +3,7 @@
 Plugin Name: WP Post Signature
 Plugin URI: http://wordpress.org/extend/plugins/wp-post-signature/
 Description: This plugin allows you to append a signature after every post. Some variables can be used, such as %post_title%, %post_link%, %bloginfo_name%, %bloginfo_url%, and so on. It supports multiuser.
-Version: 0.3.5
+Version: 0.3.6
 Author: Soli
 Author URI: https://solicomo.com
 Text Domain: wp-post-signature
@@ -124,6 +124,14 @@ function AppendSignature($content) {
 	$env_vars['%bloginfo_comments_atom_url%']	= get_bloginfo('comments_atom_url');
 	$env_vars['%bloginfo_comments_rss2_url%']	= get_bloginfo('comments_rss2_url');
 
+	$env_vars['%author_meta_id%']	            = get_the_author_meta('ID');
+	$env_vars['%author_meta_display_name%']	    = get_the_author_meta('display_name');
+	$env_vars['%author_meta_nickname%']	        = get_the_author_meta('nickname');
+	$env_vars['%author_meta_url%']	            = get_the_author_meta('url');
+	$env_vars['%author_meta_user_email%']       = get_the_author_meta('user_email');
+	$env_vars['%author_meta_user_description%'] = get_the_author_meta('user_description');
+	$env_vars['%author_meta_description%']      = nl2br(get_the_author_meta('user_description'));
+	$env_vars['%author_meta_avatar%']           = get_avatar(get_the_author_meta('ID'));
 
 	if($current_signature['signature_pos'] == 'top') {
 		return strtr(stripslashes($current_signature['signature_text']), $env_vars) . $content;

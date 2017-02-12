@@ -29,6 +29,9 @@ This plugin allows you to append a signature after every post.
 
 == Changelog ==
 
+= 0.3.6 =
+* new variables, such as %author_meta_description%, %author_meta_avatar%.
+
 = 0.3.5 =
 * fix problem about pluggable.php.
 

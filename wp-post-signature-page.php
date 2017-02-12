@@ -437,6 +437,54 @@ public function WPPostSignature_Options_Page()
 	<td>http://www.example.com/home/comments/feed</td>
 	</tr>
 
+	<tr>
+	<th scope="row">%author_meta_id%</th>
+	<td><?php _e("The author's ID.", 'wp-post-signature'); ?></td>
+	<td>1</td>
+	</tr>
+
+	<tr>
+	<th scope="row">%author_meta_display_name%</th>
+	<td><?php _e("The author's display name.", 'wp-post-signature'); ?></td>
+	<td>Soli</td>
+	</tr>
+
+	<tr>
+	<th scope="row">%author_meta_nickname%</th>
+	<td><?php _e("The author's nickname.", 'wp-post-signature'); ?></td>
+	<td>Soli</td>
+	</tr>
+
+	<tr>
+	<th scope="row">%author_meta_url%</th>
+	<td><?php _e("The author's website URL.", 'wp-post-signature'); ?></td>
+	<td>https://solicomo.com</td>
+	</tr>
+
+	<tr>
+	<th scope="row">%author_meta_user_email%</th>
+	<td><?php _e("The author's email address.", 'wp-post-signature'); ?></td>
+	<td>soli@cbug.org</td>
+	</tr>
+
+	<tr>
+	<th scope="row">%author_meta_user_description%</th>
+	<td><?php _e("The author's biographical info.", 'wp-post-signature'); ?></td>
+	<td>I'm a coder.<br />I write code.</td>
+	</tr>
+
+	<tr>
+	<th scope="row">%author_meta_description%</th>
+	<td><?php _e("The author's biographical info.(With HTML line breaks inserted before all newlines.)", 'wp-post-signature'); ?></td>
+	<td>I'm a coder.<code><br /></code><br />I write code.</td>
+	</tr>
+
+	<tr>
+	<th scope="row">%author_meta_avatar%</th>
+	<td><?php _e("The author's avatar", 'wp-post-signature'); ?></td>
+	<td><code><img alt="" src="http://url.to/avatar.jpg" class="avatar avatar-96" width="96" height="96"></code></td>
+	</tr>
+
 	</table>
 	</div>
 	<!--others end-->
