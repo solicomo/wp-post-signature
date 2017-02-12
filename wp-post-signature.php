@@ -133,7 +133,9 @@ function AppendSignature($content) {
 	$env_vars['%author_meta_description%']      = nl2br(get_the_author_meta('user_description'));
 	$env_vars['%author_meta_avatar%']           = get_avatar(get_the_author_meta('ID'));
 
-	if($current_signature['signature_pos'] == 'top') {
+	if ($current_signature['signature_pos'] == 'custom' && array_key_exists('signature_pos_mark', $current_signature) && !empty($current_signature['signature_pos_mark'])) {
+		return str_replace($current_signature['signature_pos_mark'], strtr(stripslashes($current_signature['signature_text']), $env_vars), $content);
+	} else if($current_signature['signature_pos'] == 'top') {
 		return strtr(stripslashes($current_signature['signature_text']), $env_vars) . $content;
 	} else {
 		return $content . strtr(stripslashes($current_signature['signature_text']), $env_vars);
