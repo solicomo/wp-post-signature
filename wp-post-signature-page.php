@@ -218,7 +218,7 @@ public function WPPostSignature_Options_Page()
 	<input type="hidden" name="wpps_update_options" value="Y">
 	<?php wp_nonce_field('wpps_nonce_action', 'wpps_nonce_field'); ?>
 
-	<p><?php _e('Enter your post signature in the text area below. HTML markup is allowed.', 'wp-post-signature'); ?></p>
+	<p><?php _e('Enter your post signature in the text area below. HTML is allowed.', 'wp-post-signature'); ?></p>
 	<textarea cols="75" rows="5" name="signature_text"><?php echo stripslashes($this->getStr($current_signature, 'signature_text')); ?></textarea><br />
 	<p><?php _e('Will the signature be on or off by default?', 'wp-post-signature'); ?></p>
 	<input type="radio" name="signature_switch" value="yes" <?php if($this->getStr($current_signature, 'signature_switch') == 'yes') { echo 'checked="checked"'; } ?> /><?php _e('On', 'wp-post-signature'); ?>
@@ -239,7 +239,7 @@ public function WPPostSignature_Options_Page()
 	<input type="radio" name="signature_list_switch" value="no" <?php if($this->getStr($current_signature, 'signature_list_switch') == 'no') { echo 'checked="checked"'; } ?> /><?php _e('No', 'wp-post-signature'); ?>
 	<br />
 
-	<p><?php _e('Which types of content should the signature be placed?', 'wp-post-signature'); ?></p>
+	<p><?php _e('Which types of content should the signature be placed in?', 'wp-post-signature'); ?></p>
 	<?php
 	$post_types = get_post_types();
 	foreach ($post_types as $post_type ) {
@@ -255,7 +255,7 @@ public function WPPostSignature_Options_Page()
 	<p><a href="javascript:void(0)" onclick="checkAll('signature_include_types[]')"><?php _e('check all', 'wp-post-signature'); ?></a> |
 	<a href="javascript:void(0)" onclick="checkReverse('signature_include_types[]')"><?php _e('check reverse', 'wp-post-signature'); ?></a></p>
 
-	<p><?php _e('Which categories should the signature be placed?', 'wp-post-signature'); ?></p>
+	<p><?php _e('Uncheck the categories if you do not want the signature shows up.', 'wp-post-signature'); ?></p>
 	<?php
 		$categories = get_categories('hide_empty=0');
 		foreach ($categories as $category) {

@@ -1,9 +1,9 @@
 === WP Post Signature ===
-Contributors: Soli
-Tags: wordpress,post signature
+Contributors: allnull
+Tags: signature,wordpress,post signature
 Requires at least: 3.0
-Tested up to: 4.6.1
-Stable tag: 0.3.3
+Tested up to: 4.7.2
+Stable tag: 0.3.5
 
 This plugin allows you to append a signature after every post. Some variables can be used.
 

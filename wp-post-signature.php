@@ -4,7 +4,7 @@ Plugin Name: WP Post Signature
 Plugin URI: http://wordpress.org/extend/plugins/wp-post-signature/
 Description: This plugin allows you to append a signature after every post. Some variables can be used, such as %post_title%, %post_link%, %bloginfo_name%, %bloginfo_url%, and so on. It supports multiuser.
 Version: 0.3.7
-Author: Soli
+Author: allnull
 Author URI: https://solicomo.com
 Text Domain: wp-post-signature
 Domain Path: /lang
